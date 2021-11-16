@@ -20,9 +20,12 @@ export const Day = ({ day, rowIndex }) => {
   const today = new Date().setHours(0, 0, 0, 0);
 
   useEffect(() => {
-    const currentEvents = events.filter((event) => {
-      return event?.date?.slice(0, 10) === day?.toISOString().slice(0, 10);
-    });
+    const currentEvents = events.filter(
+      (event) =>
+        event?.date?.toISOString().slice(0, 10) ===
+        day?.toISOString().slice(0, 10)
+    );
+
     setDayEvents(currentEvents);
   }, [day, events]);
 

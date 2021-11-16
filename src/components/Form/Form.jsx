@@ -27,7 +27,12 @@ export const Form = () => {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm({ defaultValues: selectedEvent });
+  } = useForm({
+    defaultValues: {
+      ...selectedEvent,
+      date: selectedEvent?.date?.toISOString().slice(0, 16),
+    },
+  });
 
   const handleFormSubmit = async (values) => {
     const id = selectedEvent ? selectedEvent.id : new Date().getTime();
@@ -51,9 +56,7 @@ export const Form = () => {
       if (selectedEvent) {
         dispatchCallEvent({
           type: "UPDATE_EVENT",
-          payload: {
-            event,
-          },
+          payload: event,
         });
         notifySuccess("Event updated successfully");
       } else {
@@ -62,6 +65,7 @@ export const Form = () => {
       }
       setSelectedColor(colors[0]);
       setTriggerFormModal(false);
+      setSelectedEvent(null);
     } catch (error) {
       setError("city", {
         type: "manual",
@@ -119,6 +123,7 @@ export const Form = () => {
         error={errors.date?.message}
         {...register("date", {
           required: "Required Field",
+          valueAsDate: true,
         })}
       />
 

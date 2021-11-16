@@ -8,9 +8,7 @@ const eventsReducer = (state, { type, payload }) => {
     case "ADD_EVENT":
       return [...state, payload];
     case "UPDATE_EVENT":
-      return state.map((event) =>
-        event.id === payload.event.id ? payload : event
-      );
+      return state.map((event) => (event.id === payload.id ? payload : event));
     case "REMOVE_EVENT":
       return state.filter((event) => event.id !== payload.id);
     default:
@@ -21,7 +19,16 @@ const eventsReducer = (state, { type, payload }) => {
 const initialEvents = () => {
   const events = localStorage.getItem("events");
 
-  return events ? JSON.parse(events) : [];
+  try {
+    const formattedEvents = JSON.parse(events).map((event) => ({
+      ...event,
+      date: new Date(event.date),
+    }));
+
+    return formattedEvents;
+  } catch (error) {
+    return [];
+  }
 };
 
 const ContextProvider = ({ children }) => {
