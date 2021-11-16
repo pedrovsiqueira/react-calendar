@@ -1,0 +1,54 @@
+.color {
+  display: flex;
+
+  img {
+    margin-right: 1rem;
+  }
+
+  p {
+    font-weight: bold;
+  }
+
+  &__picker {
+    display: flex;
+
+    span {
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &--blue {
+      background-color: blue;
+    }
+
+    &--purple {
+      background-color: purple;
+    }
+
+    &--gray {
+      background-color: gray;
+    }
+
+    &--green {
+      background-color: green;
+    }
+
+    &--red {
+      background-color: red;
+    }
+
+    &--pink {
+      background-color: pink;
+    }
+
+    &--pointer {
+      cursor: pointer;
+    }
+  }
+}
