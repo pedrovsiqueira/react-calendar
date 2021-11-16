@@ -1,0 +1,19 @@
+//Modules
+@import "./sass_modules/variables";
+@import "./sass_modules/global";
+
+// Components
+@import "../components/Month/month";
+@import "../components/Day/day";
+@import "../components/Header/header";
+@import "../components/Button/button";
+@import "../components/Input/input";
+@import "../components/Modal/modal";
+@import "../components/Form/form";
+@import "../components/Details/details";
+@import "../components/Divider/divider";
+@import "../components/ColorPicker/color-picker";
+@import "../components/Temperature/temperature";
+
+//Pages
+@import "../pages/Calendar/calendar";
