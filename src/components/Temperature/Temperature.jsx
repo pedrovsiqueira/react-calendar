@@ -6,7 +6,7 @@ export const Temperature = ({ event }) => {
       <img src={thermometerImg} alt="Temperature" />
       {event?.temperature ? (
         <>
-          <p>{Math.round(event.temperature)}</p>
+          <p>{Math.round(event.temperature)}°C</p>
           <img
             src={`https://openweathermap.org/img/wn/${event.weatherImgId}.png`}
             alt="Weather"
