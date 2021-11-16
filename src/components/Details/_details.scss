@@ -1,0 +1,22 @@
+.details {
+  input,
+  textarea {
+    margin-bottom: 1rem;
+  }
+
+  hr {
+    margin: 10px 0;
+  }
+
+  &__group {
+    display: flex;
+    align-items: center;
+
+    &--content {
+      margin-top: 5px;
+      > button {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
