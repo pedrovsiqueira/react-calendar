@@ -40,7 +40,11 @@ export const Details = ({ event }) => {
 
       <Input value={event.city} maxLength={120} type="text" label="City" />
 
-      <Input value={event.date} type="datetime-local" label="Date" />
+      <Input
+        value={event.date?.toISOString().slice(0, 16)}
+        type="datetime-local"
+        label="Date"
+      />
 
       <div className="details__group">
         <ColorPicker event={event} />
