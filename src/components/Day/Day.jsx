@@ -60,7 +60,7 @@ export const Day = ({ day, rowIndex }) => {
         </header>
 
         <div className="day__event__container">
-          {dayEvents.map((event, index) => (
+          {dayEvents.slice(0, 3).map((event, index) => (
             <div
               className={`day__event__content day__event__content--${event.color}`}
               onClick={() => setSelectedEvent(event)}
@@ -79,7 +79,7 @@ export const Day = ({ day, rowIndex }) => {
                 onClick={(event) => handleAllEventsClick(event)}
                 data-tip="All events"
               >
-                +{dayEvents.length}
+                {dayEvents.length}
               </p>
               <ReactTooltip place="top" effect="solid" />
             </span>

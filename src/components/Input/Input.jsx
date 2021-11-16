@@ -55,7 +55,7 @@ export const Input = forwardRef(
 
       {type === "datetime-local" && (
         <input
-          // readOnly={value ? true : false}
+          readOnly={value ? true : false}
           type={type}
           maxLength={maxLength}
           name={name}

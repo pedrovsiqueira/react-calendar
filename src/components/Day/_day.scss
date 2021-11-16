@@ -2,7 +2,7 @@
   border: 1px solid #dadce0;
   margin: 0 -1px -1px 0;
   cursor: pointer;
-  max-height: 100vh;
+  height: 150px;
 
   &__header {
     display: flex;
@@ -17,11 +17,6 @@
     color: #fff;
     width: 21px;
     text-align: center;
-  }
-
-  &__event__container {
-    // outline: 1px solid blue;
-    height: 100%;
   }
 
   &__event__content {

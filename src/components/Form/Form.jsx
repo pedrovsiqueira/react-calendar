@@ -21,55 +21,60 @@ export const Form = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm({ defaultValues: selectedEvent });
 
   const handleFormSubmit = async (values) => {
     const id = selectedEvent ? selectedEvent.id : new Date().getTime();
-    const weatherResults = await handleWeatherFetch(values.city);
-    const temperature = weatherResults?.data?.main?.temp || "Unavailable";
-    const weather = weatherResults?.data?.weather?.[0]?.main || "Unavailable";
-    const weatherImgId =
-      weatherResults?.data?.weather?.[0]?.icon || "Unavailable";
 
-    const event = {
-      ...values,
-      color: selectedColor,
-      id,
-      weather,
-      temperature,
-      weatherImgId,
-    };
-
-    if (selectedEvent) {
-      dispatchCallEvent({
-        type: "UPDATE_EVENT",
-        payload: {
-          event,
-        },
-      });
-      notifySuccess("Event updated successfully");
-    } else {
-      dispatchCallEvent({ type: "ADD_EVENT", payload: event });
-      notifySuccess("Event saved successfully");
-    }
-    setSelectedColor(colors[0]);
-    setTriggerFormModal(false);
-  };
-
-  const handleWeatherFetch = async (city) => {
     try {
-      return api.get("weather", {
-        params: {
-          appid: process.env.REACT_APP_API_KEY,
-          unit: "metric",
-          q: city,
-        },
-      });
+      const weatherResults = await handleWeatherFetch(values.city);
+      const temperature = weatherResults?.data?.main?.temp || "Unavailable";
+      const weather = weatherResults?.data?.weather?.[0]?.main || "Unavailable";
+      const weatherImgId =
+        weatherResults?.data?.weather?.[0]?.icon || "Unavailable";
+
+      const event = {
+        ...values,
+        color: selectedColor,
+        id,
+        weather,
+        temperature,
+        weatherImgId,
+      };
+
+      if (selectedEvent) {
+        dispatchCallEvent({
+          type: "UPDATE_EVENT",
+          payload: {
+            event,
+          },
+        });
+        notifySuccess("Event updated successfully");
+      } else {
+        dispatchCallEvent({ type: "ADD_EVENT", payload: event });
+        notifySuccess("Event saved successfully");
+      }
+      setSelectedColor(colors[0]);
+      setTriggerFormModal(false);
     } catch (error) {
+      setError("city", {
+        type: "manual",
+        message: error?.response?.data?.message?.toUpperCase(),
+      });
       notifyError("Error fetching data from API");
     }
   };
+
+  const handleWeatherFetch = async (city) =>
+    api.get("weather", {
+      params: {
+        appid: process.env.REACT_APP_API_KEY,
+        unit: "metric",
+        q: city,
+      },
+    });
 
   const handleEventRemoval = () => {
     dispatchCallEvent({ type: "REMOVE_EVENT", payload: selectedEvent });
