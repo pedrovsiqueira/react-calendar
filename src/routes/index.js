@@ -1,17 +1,17 @@
-import App from '../pages/App';
-import Calendar from '../pages/Calendar';
+import App from "../pages/App";
+import { Calendar } from "../pages/Calendar/Calendar";
 
 const Routes = [
   {
-    path: '/',
+    path: "/",
     component: App,
-    exact: true
+    exact: true,
   },
   {
-    path: '/calendar',
+    path: "/calendar",
     component: Calendar,
-    exact: true
-  }
+    exact: true,
+  },
 ];
 
 export default Routes;
