@@ -1,0 +1,15 @@
+.temperature {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+
+  > img {
+    width: 18px;
+    margin-right: 5px;
+  }
+
+  img:nth-of-type(2) {
+    width: 28px;
+    height: 28px;
+  }
+}
