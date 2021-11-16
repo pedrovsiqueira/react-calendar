@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import { api } from "../service/api";
 
 const today = new Date();
 
@@ -44,3 +45,12 @@ export const formatDate = (date) => {
 };
 
 export const colors = ["purple", "gray", "green", "red", "blue", "pink"];
+
+export const handleWeatherFetch = async (city) =>
+  api.get("weather", {
+    params: {
+      appid: process.env.REACT_APP_API_KEY,
+      unit: "metric",
+      q: city,
+    },
+  });

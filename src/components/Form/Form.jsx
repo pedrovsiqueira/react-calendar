@@ -3,9 +3,13 @@ import { useForm } from "react-hook-form";
 import { CalendarContext } from "../../hooks/calendarContext";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
-import { colors, notifyError, notifySuccess } from "../../utils/utils";
+import {
+  colors,
+  handleWeatherFetch,
+  notifyError,
+  notifySuccess,
+} from "../../utils/utils";
 import { ColorPicker } from "../ColorPicker/ColorPicker";
-import { api } from "../../service/api";
 import { Temperature } from "../Temperature/Temperature";
 
 export const Form = () => {
@@ -66,15 +70,6 @@ export const Form = () => {
       notifyError("Error fetching data from API");
     }
   };
-
-  const handleWeatherFetch = async (city) =>
-    api.get("weather", {
-      params: {
-        appid: process.env.REACT_APP_API_KEY,
-        unit: "metric",
-        q: city,
-      },
-    });
 
   const handleEventRemoval = () => {
     dispatchCallEvent({ type: "REMOVE_EVENT", payload: selectedEvent });

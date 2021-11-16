@@ -20,7 +20,9 @@ export const Input = forwardRef(
     ref
   ) => (
     <div className={`field ${error ? "field__input-container--error" : ""}`}>
-      <label className="field__label">{label}</label>
+      <label htmlFor={name} className="field__label">
+        {label}
+      </label>
       {type === "text" && (
         <>
           <input
@@ -49,6 +51,7 @@ export const Input = forwardRef(
           onBlur={onBlur}
           placeholder={placeholder}
           ref={ref}
+          id={name}
           className={`field__textarea ${error ? "field__textarea--error" : ""}`}
         />
       )}
@@ -60,11 +63,12 @@ export const Input = forwardRef(
           maxLength={maxLength}
           name={name}
           value={value}
-          initialValue={initialValue}
+          defaultValue={initialValue}
           onChange={onChange}
           onBlur={onBlur}
           placeholder={placeholder}
           ref={ref}
+          id={name}
           className={`field__input ${error ? "field__input--error" : ""}`}
         />
       )}
