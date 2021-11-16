@@ -1,0 +1,85 @@
+.day {
+  border: 1px solid #dadce0;
+  margin: 0 -1px -1px 0;
+  cursor: pointer;
+  max-height: 100vh;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  &__current {
+    background-color: #1a73e8;
+    border-radius: 50%;
+    color: #fff;
+    width: 21px;
+    text-align: center;
+  }
+
+  &__event__container {
+    // outline: 1px solid blue;
+    height: 100%;
+  }
+
+  &__event__content {
+    color: #fff;
+    align-self: flex-start;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 5px;
+    max-width: 95%;
+    margin-left: 5px;
+
+    p {
+      margin-left: 3px;
+      white-space: nowrap;
+      width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 12px;
+    }
+
+    &--all {
+      display: flex;
+      justify-content: center;
+      margin-top: 5px;
+      z-index: 10;
+
+      p {
+        border: 1px solid red;
+        color: #fff;
+        text-align: center;
+        border-radius: 50%;
+        width: 30px;
+        background-color: red;
+      }
+    }
+
+    &--blue {
+      background-color: blue;
+    }
+
+    &--purple {
+      background-color: purple;
+    }
+
+    &--gray {
+      background-color: gray;
+    }
+
+    &--green {
+      background-color: green;
+    }
+
+    &--red {
+      background-color: red;
+    }
+
+    &--pink {
+      background-color: pink;
+    }
+  }
+}
